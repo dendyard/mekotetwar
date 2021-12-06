@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Corona TET-WAR | play.kompas.com</title>
+    <script src="src/TweenMax.min.js"></script>
+    <script src="src/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/style.css">
+</head>
+
+<body>
+
+    <div>
+
+        <div id="container">
+            <audio id='kaboom'>
+                <source src="fx/kaboom.mp3" type="audio/mpeg">
+            </audio>
+            <audio id='partyrussia' loop>
+                <source src="fx/partyrussia.mp3" type="audio/mpeg">
+            </audio>
+
+            <audio id='rotate'>
+                <source src="fx/rotate.mp3" type="audio/mpeg">
+            </audio>
+
+            <div id="score">0</div>
+            <img src="assets/logokompas.png" id='logo'>
+            <img src="assets/corona.png" id='cor1'>
+            <img src="assets/corona.png" id='cor2'>
+            <img src="assets/corona.png" id='cor3'>
+            <img src="assets/en2.png" id='cor4'>
+
+
+            <img src="assets/dhuar.png" id='dhuar'>
+
+            <div id='entittle'>
+                Basmi semua virus corona yang makin bandel!<br>
+                Susun balok kamu sampai corona habis!
+            </div>
+            <!--
+            
+            <div id='darahcor'></div>
+-->
+            <div id='enemycontainer'>
+                <img src="assets/en1.png" class='an' id='aen1'>
+                <img src="assets/en1.png" class='an' id='aen2'>
+                <img src="assets/en1.png" class='an' id='aen3'>
+                <img src="assets/en1.png" class='an' id='aen4'>
+                <img src="assets/en1.png" class='an' id='aen5'>
+                <img src="assets/en1.png" class='an' id='aen6'>
+                <img src="assets/en1.png" class='an' id='aen7'>
+                <img src="assets/en1.png" class='an' id='aen8'>
+                <img src="assets/en1.png" class='an' id='aen9'>
+                <img src="assets/en1.png" class='an' id='aen10'>
+                <img src="assets/en1.png" class='an' id='aen11'>
+                <img src="assets/en1.png" class='an' id='aen12'>
+                <img src="assets/en1.png" class='an' id='aen13'>
+                <img src="assets/en1.png" class='an' id='aen14'>
+                <img src="assets/en1.png" class='an' id='aen15'>
+                <img src="assets/en1.png" class='an' id='aen16'>
+                <img src="assets/en1.png" class='an' id='aen17'>
+                <img src="assets/en1.png" class='an' id='aen18'>
+                <img src="assets/en1.png" class='an' id='aen19'>
+                <img src="assets/en1.png" class='an' id='aen20'>
+
+
+            </div>
+            <canvas id="map" width="300" height="600"></canvas>
+            <img src="assets/cover.png" id='cover'>
+            <img src="assets/startbtn.png" id='strbtn'>
+            <img src="assets/meko_punch.png" id='meko'>
+            <img src="assets/logotet.png" id='logotet'>
+
+            <img src="assets/gameover.png" id='c_over'>
+            <img src="assets/berhasil.png" id='c_over2'>
+            <img src="assets/howto.png" id='howto'>
+            <img src="assets/mulai.png" id='mulai'>
+
+            <div id='dimmer'></div>
+        </div>
+
+    </div>
+
+    <script>
+        explodeboard();
+
+        var enemycont = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+
+        ]
+        genenemy();
+
+        function genenemy() {
+            var max = 9;
+
+            for (i = (enemycont.length - 1); i >= 0; i--) {
+                enemycont[i][Math.floor(Math.random() * (max - 0 + 1)) + 0] = 1;
+            }
+            //console.log(enemycont);
+        }
+
+        function cleandeadvirus() {
+            for (i = (enemycont.length - 1); i >= 0; i--) {
+                if (enemycont[i][0] == 8) {
+                    moveArrEnemy(i);
+                    i = (enemycont.length - 1);
+                    cleanVirus();
+                }
+            }
+            
+            //console.log(enemycont);
+        }
+
+        function moveArrEnemy(enemy) {
+            enemycont.splice(enemy, 1);
+            //enemycont.splice(19, 1);
+
+            enemycont.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+            initenemycont();
+        }
+
+
+
+        function d(id) {
+            return document.getElementById(id);
+        }
+
+        for (i = 0; i < 20; i++) {
+            TweenLite.to(d('aen' + (i + 1)), 0.5, {
+                x: (30 * 5),
+                y: -100,
+                ease: Expo.easeOut
+            });
+        }
+
+        TweenLite.to(dimmer, 0, {
+            opacity: 0,
+            ease: Back.easeOut
+        });
+        TweenLite.to(c_over, 0, {
+            scale: 0,
+            ease: Back.easeOut
+        });
+        TweenLite.to(c_over2, 0, {
+            scale: 0,
+            ease: Back.easeOut
+        });
+
+        dimmer.style.display = 'none';
+
+        function winner_all() {
+            dimmer.style.display = 'block';
+            c_over2.style.display = 'block';
+
+            TweenLite.to(c_over2, 0.5, {
+                scale: 1,
+                ease: Back.easeOut,
+                delay: 0.5
+            });
+            TweenLite.to(meko, 0.5, {
+                x: 3000,
+                ease: Back.easeOut
+            });
+
+            TweenLite.to(dimmer, 0.5, {
+                opacity: 1,
+                ease: Back.easeOut
+            });
+        }
+
+        function gameover_all() {
+            dimmer.style.display = 'block';
+            c_over.style.display = 'block';
+
+            TweenLite.to(c_over, 0.5, {
+                scale: 1,
+                ease: Back.easeOut,
+                delay: 0.5
+            });
+            TweenLite.to(meko, 0.5, {
+                x: 3000,
+                ease: Back.easeOut
+            });
+
+            TweenLite.to(dimmer, 0.5, {
+                opacity: 1,
+                ease: Back.easeOut
+            });
+
+        }
+
+        function cleanVirus() {
+            for (i = 0; i < 20; i++) {
+                TweenLite.to(d('aen' + (i + 1)), 0, {
+                    opacity: 0,
+                    ease: Expo.easeOut
+                });
+            }
+        }
+
+        function initenemycont() {
+
+            let isItClean = true;
+            let w_cont = 30;
+            for (i = 0; i < 20; i++) {
+                for (j = 0; j < 10; j++) {
+                    if (enemycont[i][j] == 1 || enemycont[i][j] == 8) {
+                        TweenLite.to(d('aen' + (i + 1)), 0.4, {
+                            x: (w_cont * j),
+                            y: (w_cont * i),
+                            opacity: 1,
+                            ease: Expo.easeOut
+                        });
+                        isItClean = false;
+                    }
+                }
+
+            }
+
+            if (isItClean) {
+                gameover = true;
+                isItWin = true;
+            }
+        }
+
+        function explodeboard(tp = 1) {
+
+            TweenLite.to(map, 0.1, {
+                scale: 0.8,
+                y: -50,
+                ease: Expo.easeOut
+            });
+            TweenLite.to(map, 0.3, {
+                scale: 1,
+                y: 0,
+                ease: Back.easeOut,
+                delay: 0.2
+            });
+
+            TweenLite.to(dhuar, 0, {
+                scale: 0.6,
+                alpha: 0.5,
+                ease: Expo.easeOut
+            });
+
+            TweenLite.to(dhuar, 0.1, {
+                scale: 0.7,
+                alpha: 1,
+                ease: Expo.easeOut,
+                delay: 0.1
+            });
+            TweenLite.to(dhuar, 0.3, {
+                scale: 0.6,
+                alpha: 0,
+                ease: Expo.easeOut,
+                delay: 0.4
+            });
+
+            if (tp != 1) {
+
+                TweenLite.to(meko, 0.1, {
+                    scale: 1.5,
+                    x: -90,
+                    y: -180,
+                    rotation: -45,
+                    ease: Expo.easeOut
+                });
+                TweenLite.to(meko, 0.3, {
+                    scale: 1,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    ease: Expo.easeOut,
+                    delay: 0.4
+                });
+
+                TweenLite.to(cor1, 0.1, {
+                    scale: 1.5,
+                    x: 120,
+                    y: -50,
+                    rotation: 90,
+                    ease: Expo.easeOut
+                });
+                TweenLite.to(cor1, 0.3, {
+                    scale: 1,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    ease: Expo.easeOut,
+                    delay: 0.4,
+                    onComplete: cleandeadvirus
+                });
+            } else {
+                TweenLite.to(meko, 0.1, {
+                    scale: 1.5,
+                    x: 0,
+                    y: -180,
+                    rotation: -15,
+                    ease: Expo.easeOut
+                });
+                TweenLite.to(meko, 0.3, {
+                    scale: 1,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    ease: Expo.easeOut,
+                    delay: 0.4
+                });
+
+                TweenLite.to(cor1, 0.1, {
+                    scale: 1.5,
+                    x: 0,
+                    y: -50,
+                    rotation: 90,
+                    ease: Expo.easeOut
+                });
+                TweenLite.to(cor1, 0.3, {
+                    scale: 1,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    ease: Expo.easeOut,
+                    delay: 0.4,
+                    onComplete: cleandeadvirus
+                });
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

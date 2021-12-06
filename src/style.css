@@ -1,0 +1,208 @@
+body {
+    margin: auto;
+    overflow: hidden;
+}
+
+#map {
+    position: absolute;
+    display: block;
+    margin: 97px auto 0 auto;
+    left: 0;
+    right: 0;
+    border: 1px solid #1b1b1b;
+    background-color: #1b1b1b;
+}
+
+#score {
+    text-align: center;
+    font: 35px Comic Sans MS;
+    color: #eee;
+    position: absolute;
+    left: 560px;
+    width: 138px;
+    top: 395px;
+}
+
+#container {
+    width: 740px;
+    height: 740px;
+    background-image: url(../assets/bg.png);
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: auto;
+    overflow: hidden;
+}
+
+#logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 28px;
+    z-index: 1001;
+}
+
+#cor1 {
+    position: absolute;
+    top: 225px;
+    left: 10px;
+    z-index: 21;
+}
+
+#cor2 {
+    position: absolute;
+    top: 159px;
+    left: 10px;
+    width: 69px;
+}
+
+#cor3 {
+    position: absolute;
+    top: 448px;
+    left: 143px;
+    width: 34px;
+}
+
+#cor4 {
+    position: absolute;
+    top: 118px;
+    left: 560px;
+}
+
+#meko {
+    position: absolute;
+    top: 467px;
+    right: 10px;
+}
+
+#strbtn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 100px;
+    z-index: 300;
+    cursor: pointer;
+}
+
+#cover {
+    position: absolute;
+    left: 221px;
+    top: 97px;
+    cursor: pointer;
+}
+
+#dhuar {
+    position: absolute;
+    left: 15px;
+    top: 19px;
+}
+
+#darahcor {
+    position: absolute;
+    left: 20px;
+    top: 455px;
+    height: 30px;
+    width: 180px;
+    background-color: red;
+    border-radius: 50px;
+}
+
+#entittle {
+    position: absolute;
+    right: 17px;
+    top: 268px;
+    font-size: 14px;
+    color: #fff;
+    font: 14px Comic Sans MS;
+    width: 183px;
+    text-align: center;
+}
+
+#en1 {
+    position: absolute;
+    top: 515px;
+    left: 300px;
+    width: 30px;
+    height: 31px;
+
+    z-index: 100;
+}
+
+#enemycontainer {
+    position: absolute;
+    z-index: 100;
+    width: 300px;
+    height: 600px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 97px;
+}
+
+.an {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    z-index: 400;
+    opacity: 0;
+}
+
+
+#c_over {
+    position: absolute;
+    left: 26px;
+    right: 0;
+    margin: auto;
+    top: 77px;
+    z-index: 1000;
+    display: none;
+}
+
+#c_over2 {
+    position: absolute;
+    left: 26px;
+    right: 0;
+    margin: auto;
+    top: 77px;
+    z-index: 1000;
+    display: none;
+}
+
+#dimmer {
+    position: absolute;
+    z-index: 900;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#logotet {
+    position: absolute;
+    left: 8px;
+    bottom: 0px;
+    display: none;
+}
+
+#howto {
+    position: absolute;
+    left: -14px;
+    right: 0;
+    margin: auto;
+    top: 185px;
+    display: none;
+}
+
+#mulai {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 585px;
+    cursor: pointer;
+    display: none;
+    z-index: 9000;
+}
